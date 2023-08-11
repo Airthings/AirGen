@@ -1,0 +1,25 @@
+apply from: "$rootDir/gradle/config.gradle"
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+// Annotation processors discovery from compile classpath is deprecated.
+kapt {
+    includeCompileClasspath = false
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = versions.jdk
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = versions.jdk
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin_reflect}"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:${versions.kotlin_serialization}"
+}

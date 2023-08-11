@@ -1,0 +1,17 @@
+apply from: "$rootDir/gradle/config.gradle"
+
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+detekt {
+    baseline = file('detekt-baseline.xml')
+    config = files('detekt.yml')
+    input = files('.')
+    debug = false
+    disableDefaultRuleSets = false
+    ignoreFailures = false
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:${versions.plugin_detekt}"
+    detekt "io.gitlab.arturbosch.detekt:detekt-cli:${versions.detekt}"
+}

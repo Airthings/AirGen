@@ -1,0 +1,1233 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+  weights:
+  # complexity: 2
+  # LongParameterList: 1
+  # style: 1
+  # comments: 1
+
+config:
+  validation: true
+  # when writing own rules with new properties, exclude the property path e.g.: "my_rule_set,.*>.*>[my_property]"
+  excludes: ""
+
+processors:
+  active: true
+  exclude:
+    - 'DetektProgressListener'
+  # - 'FunctionCountProcessor'
+  # - 'PropertyCountProcessor'
+  # - 'ClassCountProcessor'
+  # - 'PackageCountProcessor'
+  # - 'KtFileCountProcessor'
+
+console-reports:
+  active: true
+  exclude:
+    - 'ProjectStatisticsReport'
+    - 'ComplexityReport'
+    - 'NotificationReport'
+    #  - 'FindingsReport'
+    - 'FileBasedFindingsReport'
+
+comments:
+  active: true
+  excludes:
+    - "**/*openapi/**"
+    - "**/gen/**"
+    - "**/test/**"
+    - "**/androidTest/**"
+    - "**/*.Test.kt"
+    - "**/*.Spec.kt"
+    - "**/*.Spek.kt"
+  CommentOverPrivateFunction:
+    active: false
+  CommentOverPrivateProperty:
+    active: false
+  EndOfSentenceFormat:
+    active: true
+    endOfSentenceFormat: ([.?!][ \t\n\r\f<])|([.?!:]$)
+  UndocumentedPublicClass:
+    active: true
+    searchInNestedClass: true
+    searchInInnerClass: true
+    searchInInnerObject: true
+    searchInInnerInterface: true
+  UndocumentedPublicFunction:
+    active: false
+  UndocumentedPublicProperty:
+    active: true
+
+complexity:
+  active: true
+  ComplexCondition:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 4
+  ComplexInterface:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 15
+    includeStaticDeclarations: false
+  ComplexMethod:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 15
+    ignoreSingleWhenExpression: false
+    ignoreSimpleWhenEntries: false
+    ignoreNestingFunctions: false
+    nestingFunctions:
+      - "run"
+      - "let"
+      - "apply"
+      - "with"
+      - "also"
+      - "use"
+      - "forEach"
+      - "isNotNull"
+      - "ifNull"
+  LabeledExpression:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  LargeClass:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 600
+  LongMethod:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 60
+  LongParameterList:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    functionThreshold: 6
+    constructorThreshold: 6
+    ignoreDefaultParameters: false
+  MethodOverloading:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 6
+  NestedBlockDepth:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    threshold: 4
+  StringLiteralDuplication:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    threshold: 3
+    ignoreAnnotation: true
+    excludeStringsWithLessThan5Characters: true
+    ignoreStringsRegex: '$^'
+  TooManyFunctions:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    thresholdInFiles: 11
+    thresholdInClasses: 11
+    thresholdInInterfaces: 11
+    thresholdInObjects: 11
+    thresholdInEnums: 11
+    ignoreDeprecated: false
+    ignorePrivate: false
+    ignoreOverridden: false
+
+coroutines:
+  active: true
+  GlobalCoroutineUsage:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  RedundantSuspendModifier:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+
+empty-blocks:
+  active: true
+  EmptyCatchBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    allowedExceptionNameRegex: "^(_|(ignore|expected).*)"
+  EmptyClassBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyDefaultConstructor:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyDoWhileBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyElseBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyFinallyBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyForBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyFunctionBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreOverridden: false
+  EmptyIfBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyInitBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyKtFile:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptySecondaryConstructor:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyWhenBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EmptyWhileBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+
+exceptions:
+  active: true
+  ExceptionRaisedInUnexpectedLocation:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    methodNames:
+      - "toString"
+      - "hashCode"
+      - "equals"
+      - "finalize"
+  InstanceOfCheckForException:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+  NotImplementedDeclaration:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  PrintStackTrace:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  RethrowCaughtException:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ReturnFromFinally:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreLabeled: false
+  SwallowedException:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoredExceptionTypes:
+      - "InterruptedException"
+      - "NumberFormatException"
+      - "ParseException"
+      - "MalformedURLException"
+    allowedExceptionNameRegex: "^(_|(ignore|expected).*)"
+  ThrowingExceptionFromFinally:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ThrowingExceptionInMain:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ThrowingExceptionsWithoutMessageOrCause:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    exceptions:
+      - "IllegalArgumentException"
+      - "IllegalStateException"
+      - "IOException"
+  ThrowingNewInstanceOfSameException:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  TooGenericExceptionCaught:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    exceptionNames:
+      - ArrayIndexOutOfBoundsException
+      - Error
+      - Exception
+      - IllegalMonitorStateException
+      - NullPointerException
+      - IndexOutOfBoundsException
+      - RuntimeException
+      - Throwable
+    allowedExceptionNameRegex: "^(_|(ignore|expected).*)"
+  TooGenericExceptionThrown:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    exceptionNames:
+      - Error
+      - Exception
+      - Throwable
+      - RuntimeException
+
+formatting:
+  active: true
+  android: false
+  autoCorrect: true
+  AnnotationOnSeparateLine:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  ChainWrapping:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  CommentSpacing:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  EnumEntryNameCase:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  Filename:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  FinalNewline:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  ImportOrdering:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+    layout: "*" # Keep it the same as value of "ij_kotlin_imports_layout" in .editorconfig.
+  Indentation:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+    indentSize: 4
+    continuationIndentSize: 4
+  MaximumLineLength:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    maxLineLength: 120
+  ModifierOrdering:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  MultiLineIfElse:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoBlankLineBeforeRbrace:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoConsecutiveBlankLines:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoEmptyClassBody:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoEmptyFirstLineInMethodBlock:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoLineBreakAfterElse:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoLineBreakBeforeAssignment:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoMultipleSpaces:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoSemicolons:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoTrailingSpaces:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoUnitReturn:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoUnusedImports:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  NoWildcardImports:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  PackageName:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  ParameterListWrapping:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+    indentSize: 4
+  SpacingAroundColon:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundComma:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundCurly:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundDot:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundKeyword:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundOperators:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundParens:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  SpacingAroundRangeOperator:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+  StringTemplate:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    autoCorrect: true
+
+naming:
+  active: true
+  ClassNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    classPattern: '[A-Z$][a-zA-Z0-9$]*'
+  ConstructorParameterNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    parameterPattern: '[a-z][A-Za-z0-9]*'
+    privateParameterPattern: '[a-z][A-Za-z0-9]*'
+    excludeClassPattern: '$^'
+    ignoreOverridden: true
+  EnumNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    enumEntryPattern: '^[A-Z][_a-zA-Z0-9]*'
+  ForbiddenClassName:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+  FunctionMaxLength:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    maximumFunctionNameLength: 30
+  FunctionMinLength:
+    active: true
+    minimumFunctionNameLength: 2
+  FunctionNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
+    excludeClassPattern: '$^'
+    ignoreOverridden: true
+  FunctionParameterNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    parameterPattern: '[a-z][A-Za-z0-9]*'
+    excludeClassPattern: '$^'
+    ignoreOverridden: true
+  InvalidPackageDeclaration:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    rootPackage: ''
+  MatchingDeclarationName:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  MemberNameEqualsClassName:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreOverridden: true
+  ObjectPropertyNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    constantPattern: '[A-Za-z][_A-Za-z0-9]*'
+    propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
+    privatePropertyPattern: '(_)?[A-Za-z][_A-Za-z0-9]*'
+  PackageNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    packagePattern: '^[a-z]+(\.[a-z][A-Za-z0-9]*)*$'
+  TopLevelPropertyNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    constantPattern: '[A-Z][_A-Z0-9]*'
+    propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
+    privatePropertyPattern: '_?[A-Za-z][_A-Za-z0-9]*'
+  VariableMaxLength:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    maximumVariableNameLength: 32
+  VariableMinLength:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    minimumVariableNameLength: 3
+  VariableNaming:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    variablePattern: '[a-z][A-Za-z0-9]*'
+    privateVariablePattern: '(_)?[a-z][A-Za-z0-9]*'
+    excludeClassPattern: '$^'
+    ignoreOverridden: true
+
+performance:
+  active: true
+  ArrayPrimitive:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ForEachOnRange:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+  SpreadOperator:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+  UnnecessaryTemporaryInstantiation:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+
+potential-bugs:
+  active: true
+  Deprecation:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  DuplicateCaseInWhenExpression:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EqualsWithHashCodeExist:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ExplicitGarbageCollectionCall:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  HasPlatformType:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ImplicitDefaultLocale:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  InvalidRange:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  IteratorHasNextCallsNextMethod:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  IteratorNotThrowingNoSuchElementException:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  LateinitUsage:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    ignoreOnClassesPattern: ""
+  MapGetWithNotNullAssertionOperator:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  MissingWhenCase:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  RedundantElseInWhen:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnconditionalJumpStatementInLoop:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnreachableCode:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnsafeCallOnNullableType:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnsafeCast:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UselessPostfixExpression:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  WrongEqualsTypeParameter:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+
+style:
+  active: true
+  CollapsibleIfStatements:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  DataClassContainsFunctions:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    conversionFunctionPrefix:
+      - "to"
+  DataClassShouldBeImmutable:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EqualsNullCall:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  EqualsOnSignatureLine:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ExplicitCollectionElementAccessMethod:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ExplicitItLambdaParameter:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ExpressionBodySyntax:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    includeLineWrapping: false
+  ForbiddenComment:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    values:
+      - "TODO"
+      - "FIXME"
+      - "STOPSHIP"
+    allowedPatterns: "TODO\\([a-zA-Z -]+\\):"
+  ForbiddenImport:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    forbiddenPatterns: ""
+  ForbiddenMethodCall:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ForbiddenPublicDataClass:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignorePackages:
+      - "*.internal"
+      - "*.internal.*"
+  ForbiddenVoid:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreOverridden: false
+    ignoreUsageInGenerics: false
+  FunctionOnlyReturningConstant:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreOverridableFunction: true
+    ignoreAnnotated:
+      - "dagger.Provides"
+  LibraryCodeMustSpecifyReturnType:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  LoopWithTooManyJumpStatements:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    maxJumpCount: 1
+  MagicNumber:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"
+    ignoreNumbers:
+      - "-1"
+      - "0"
+      - "1"
+      - "2"
+    ignoreHashCodeFunction: true
+    ignorePropertyDeclaration: false
+    ignoreLocalVariableDeclaration: false
+    ignoreConstantDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotation: false
+    ignoreNamedArgument: true
+    ignoreEnums: false
+    ignoreRanges: false
+  MandatoryBracesIfStatements:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  MaxLineLength:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    maxLineLength: 120
+    excludePackageStatements: true
+    excludeImportStatements: true
+    excludeCommentStatements: false
+  MayBeConst:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ModifierOrder:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  NestedClassesVisibility:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  NewLineAtEndOfFile:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  NoTabs:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  OptionalAbstractKeyword:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  OptionalUnit:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  OptionalWhenBraces:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  PreferToOverPairSyntax:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ProtectedMemberInFinalClass:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  RedundantExplicitType:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  RedundantVisibilityModifierRule:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ReturnCount:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    max: 3
+    excludeLabeled: true
+    excludeReturnFromLambda: true
+    excludeGuardClauses: true
+  SafeCast:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  SerialVersionUIDInSerializableClass:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  SpacingBetweenPackageAndImports:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  ThrowsCount:
+    active: false
+  TrailingWhitespace:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnderscoresInNumericLiterals:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    acceptableLength: 5
+  UnnecessaryAbstractClass:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    ignoreAnnotated:
+      - "dagger.Module"
+  UnnecessaryAnnotationUseSiteTarget:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnnecessaryApply:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnnecessaryInheritance:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnnecessaryLet:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnnecessaryParentheses:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UntilInsteadOfRangeTo:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnusedImports:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnusedPrivateClass:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UnusedPrivateMember:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    allowedNames: "(_|ignored|expected|serialVersionUID)"
+  UseArrayLiteralsInAnnotations:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UseCheckOrError:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UseDataClass:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+    allowVars: false
+  UseIfInsteadOfWhen:
+    active: false
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UseRequire:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UselessCallOnNotNull:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  UtilityClassWithPublicConstructor:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  VarCouldBeVal:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+  WildcardImport:
+    active: true
+    excludes:
+      - "**/*openapi/**"
+      - "**/gen/**"
+      - "**/test/**"
+      - "**/androidTest/**"
+      - "**/*.Test.kt"
+      - "**/*.Spec.kt"
+      - "**/*.Spek.kt"

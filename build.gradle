@@ -1,0 +1,62 @@
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'kotlinx-serialization'
+
+final _moduleName = 'airgen'
+shadowJar {
+    archiveBaseName.set(_moduleName)
+}
+startShadowScripts {
+    applicationName = _moduleName
+}
+
+application {
+    group = "com.airthings.$_moduleName"
+    version = '0.0.3'
+    description = 'AirGen is a general-purpose text generator – ' +
+        'uses a JSON or Yaml file as a model, and a FreeMarker template as a view.'
+    mainClassName = "${group}.App" // Deprecated, but Shadow plugin requires it for now.
+    mainClass.set(mainClassName)
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+buildscript {
+    apply from: 'gradle/config.gradle'
+
+    repositories {
+        gradlePluginPortal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.plugin_kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:${versions.plugin_kotlin}"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.plugin_detekt}"
+        classpath "com.github.jengelman.gradle.plugins:shadow:${versions.plugin_shadow}"
+        classpath "com.github.ben-manes:gradle-versions-plugin:${versions.plugin_updates}"
+    }
+}
+
+apply from: 'gradle/detekt.gradle'
+apply from: 'gradle/jvm.gradle'
+apply from: 'gradle/kotlin.gradle'
+
+dependencies {
+    // Compile dependencies.
+    implementation "com.google.code.gson:gson:${versions.gson}"
+    implementation "org.yaml:snakeyaml:${versions.snakeyaml}"
+    implementation "com.beust:jcommander:${versions.jcommander}"
+    implementation "org.freemarker:freemarker:${versions.freemarker}"
+
+    // Test dependencies.
+    testImplementation 'junit:junit:4.13.2'
+}

@@ -1,0 +1,30 @@
+// Find the right versions of Kotlin and associated module here:
+// https://kotlinlang.org/docs/releases.html#release-details
+def _kotlinVersion = '1.6.10'
+def _kotlinSerializationVersion = '1.3.1'
+
+def _detektVersion = '1.19.0'
+
+// Versions of 3rd party libraries.
+ext.encoding = 'UTF-8'
+
+// noinspection GroovyAssignabilityCheck
+ext.versions = [
+    jdk                     : JavaVersion.VERSION_1_8,
+
+    // Plugins.
+    plugin_shadow           : '6.1.0',
+    plugin_updates          : '0.41.0',
+    plugin_kotlin           : _kotlinVersion,
+    plugin_detekt           : _detektVersion,
+
+    // Dependencies.
+    kotlin                  : _kotlinVersion,
+    kotlin_reflect          : _kotlinVersion,
+    kotlin_serialization    : _kotlinSerializationVersion,
+    detekt                  : _detektVersion,
+    gson                    : '2.8.9',
+    snakeyaml               : '1.30',
+    jcommander              : '1.82',
+    freemarker              : '2.3.31'
+]
